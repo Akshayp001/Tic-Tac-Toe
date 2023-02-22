@@ -289,6 +289,9 @@ class _HomePageState extends State<HomePage> {
   void checkDraw() {
     if (occupiedBoxes.length == 9 && winPlayer == null) {
       showdiaBox("Game Draw!");
+      setState(() {
+        displayTurnText = "Game Over!";
+      });
     }
     // draw logic
   }
@@ -407,19 +410,46 @@ class _HomePageState extends State<HomePage> {
                     );
                   }),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  return setState(() {
-                    startGame();
-                  });
-                },
-                child: Text(
-                  "Reset Game",
-                  style: TextStyle(
-                    color: Colors.green[900],
-                    fontSize: 25,
+            // ElevatedButton(
+            //     onPressed: () {
+            //       return setState(() {
+            //         startGame();
+            //       });
+            //     },
+            //     child: Text(
+            //       "Reset Game",
+            //       style: TextStyle(
+            //         color: Colors.green[900],
+            //         fontSize: 25,
+            //       ),
+            //     ))
+
+            // Replaced Normal Elevated Button With Decorated Container Wrapped With InkWell
+            InkWell(
+              onTap: () {
+                setState(() {
+                  startGame();
+                });
+              },
+              child: Center(
+                child: Container(
+                  height: 50,
+                  width: 170,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.blue.withOpacity(0.8),
+                      border: Border.all(color: Colors.red.shade200, width: 4),
+                      borderRadius: BorderRadius.all(Radius.circular(50))),
+                  child: Text(
+                    "Reset Game",
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
-                ))
+                ),
+              ),
+            ),
           ],
         ),
       ),
