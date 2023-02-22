@@ -113,6 +113,7 @@ class _HomePageState extends State<HomePage> {
 
   showdiaBox(String titleText) {
     return showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (ctx) {
           return AlertDialog(
@@ -120,7 +121,6 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             alignment: Alignment.bottomCenter,
             backgroundColor: Colors.blue[200],
-            // icon: Icon(Icons.add_alert),
             titleTextStyle: TextStyle(fontWeight: FontWeight.bold),
             title: Center(
               child: Container(
@@ -171,19 +171,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-              )
-              // ElevatedButton(
-              //     style: ButtonStyle(),
-              //     onPressed: () {
-              //       return setState(() {
-              //         startGame();
-              //         Navigator.of(ctx).pop();
-              //       });
-              //     },
-              //     child: Text(
-              //       "Reset Game",
-              //       style: TextStyle(fontSize: 20, color: Colors.blueGrey[100]),
-              //     ))
+              ),
             ],
           );
         });
